@@ -12,17 +12,6 @@ extern "C" {
 
 typedef struct imu_madgwick *imu_madgwick_handle_t;
 
-
-/**
- * @brief   Quaternion data structure.
- */
-typedef struct {
-    float q0;
-    float q1;
-    float q2;
-    float q3;
-} imu_madgwick_quat_t;
-
 /**
  * @brief   Configuration structure.
  */
@@ -93,13 +82,13 @@ err_code_t imu_madgwick_set_sample_frequency(imu_madgwick_handle_t handle, float
  * @brief   Get quaternion.
  *
  * @param   handle Handle structure.
- * @param   quat_data Quaternion.
+ * @param   q0, q1, q2 q3 Quaternion data.
  *
  * @return
  *      - ERR_CODE_SUCCESS: Success.
  *      - Others:           Fail.
  */
-err_code_t imu_madgwick_get_quaternion(imu_madgwick_handle_t handle, imu_madgwick_quat_t *quat);
+err_code_t imu_madgwick_get_quaternion(imu_madgwick_handle_t handle, float *q0, float *q1, float *q2, float *q3);
 
 /*
  * @brief   Update Madgwick AHRS quaternion with 6 motions.

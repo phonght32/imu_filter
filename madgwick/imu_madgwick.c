@@ -92,7 +92,7 @@ err_code_t imu_madgwick_set_sample_frequency(imu_madgwick_handle_t handle, float
     return ERR_CODE_SUCCESS;
 }
 
-err_code_t imu_madgwick_get_quaternion(imu_madgwick_handle_t handle, imu_madgwick_quat_t *quat)
+err_code_t imu_madgwick_get_quaternion(imu_madgwick_handle_t handle, float *q0, float *q1, float *q2, float *q3)
 {
     /* Check input conditions */
     if (handle == NULL) 
@@ -100,10 +100,10 @@ err_code_t imu_madgwick_get_quaternion(imu_madgwick_handle_t handle, imu_madgwic
         return ERR_CODE_NULL_PTR;
     }
 
-    quat->q0 = handle->q0;
-    quat->q1 = handle->q1;
-    quat->q2 = handle->q2;
-    quat->q3 = handle->q3;
+    *q0 = handle->q0;
+    *q1 = handle->q1;
+    *q2 = handle->q2;
+    *q3 = handle->q3;
 
     return ERR_CODE_SUCCESS;
 }
